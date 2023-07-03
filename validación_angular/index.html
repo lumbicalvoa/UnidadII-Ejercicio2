@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+  <form ng-submit="submitForm()">
+    <input type="number" ng-model="age" min="0" max="100" required>
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script>
+    angular.module('myApp', [])
+      .controller('myCtrl', function($scope) {
+        $scope.submitForm = function() {
+          // Validar la edad antes de enviarla al servidor
+          if ($scope.age >= 0 && $scope.age <= 100) {
+            alert('La edad es válida.');
+            // Aquí puedes agregar el código para enviar la edad al servidor si es necesario
+          } else {
+            alert('La edad debe ser un número entre 0 y 100.');
+          }
+        };
+      });
+  </script>
+
+</body>
+</html>
